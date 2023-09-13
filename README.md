@@ -8,10 +8,6 @@ However, I build this using MongoDB locally (not using ATLAS). So make sure you 
 
 Update the DB configs in the application.properties file accordingly.
 
-```bash
-pip install foobar
-```
-
 ## Contributing
 
 Pull requests are welcome. For major changes, please open an issue first
