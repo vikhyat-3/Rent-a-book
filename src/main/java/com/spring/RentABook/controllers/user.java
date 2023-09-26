@@ -2,6 +2,8 @@ package com.spring.RentABook.controllers;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -29,9 +31,13 @@ public class user {
         return userService.getUsers();
     }
     @PostMapping("/user")
-    public User newUser(@jakarta.validation.Valid@RequestBody User user){
+    public ResponseEntity<User> newUser(@jakarta.validation.Valid@RequestBody User user){
         System.out.print(user);
-        return userService.createNewUser(user);
+        if(user.getId()!=null){
+            return ResponseEntity.badRequest().build();
+        }
+        User createdUser=userService.createNewUser(user);
+        return ResponseEntity.status(HttpStatus.CREATED).body(createdUser);
     }
     @GetMapping("/ok")
     public void demo(){
