@@ -1,6 +1,6 @@
 package com.spring.RentABook.entity;
 
-import java.util.List;
+import java.util.ArrayList;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -33,11 +33,11 @@ public class Author {
 
     private Gender gender;
 
-    private List<Book> books;
+    private ArrayList<Book> books;
 
     public Author(String id,
             @NotBlank(message = "Please enter author name") @NotNull(message = "Please enter author name") @Size(min = 2, max = 100) @Length(min = 2, max = 100) String name,
-            Gender gender, List<Book> books) {
+            Gender gender, ArrayList<Book> books) {
         this.id = id;
         this.name = name;
         this.gender = gender;
@@ -64,11 +64,11 @@ public class Author {
         this.gender = gender;
     }
 
-    public List<Book> getBooks() {
+    public ArrayList<Book> getBooks() {
         return books;
     }
 
-    public void setBooks(List<Book> books) {
+    public void setBooks(ArrayList<Book> books) {
         this.books = books;
     }
 

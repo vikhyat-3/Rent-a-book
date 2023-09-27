@@ -1,4 +1,5 @@
 package com.spring.RentABook.entity;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -22,7 +23,7 @@ import jakarta.validation.constraints.Size;
 public class Book {
     public Book(String id,
             @NotBlank(message = "Please enter book name") @NotNull(message = "Please enter book name") @Size(min = 2, max = 100) @Length(min = 2, max = 100) String name,
-            Author author, Date publishedDate, List<Genre> genre, String description) {
+            Author author, Date publishedDate, ArrayList<Genre> genre, String description) {
         this.id = id;
         this.name = name;
         this.author = author;
@@ -44,7 +45,7 @@ public class Book {
 
     private Author author;
     private Date publishedDate;
-    private List<Genre> genre;
+    private ArrayList<Genre> genre;
     private String description;
 
 
@@ -69,7 +70,7 @@ public class Book {
         return genre;
     }
 
-    public void setGenre(List<Genre> genre) {
+    public void setGenre(ArrayList<Genre> genre) {
         this.genre = genre;
     }
 
