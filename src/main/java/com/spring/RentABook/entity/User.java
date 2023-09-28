@@ -27,6 +27,10 @@ public class User {
     @Length(min = 2, max = 100)
     private String name;
     
+    @NotBlank(message = "Please enter user name")
+    @NotNull(message = "Please enter user name but null raising")
+    private String location;
+    
     @Override
     public String toString(){
         return this.id+" "+this.name;
@@ -46,5 +50,13 @@ public class User {
 
     public void setName(String name) {
         this.name = name;
+    }
+    
+    public String getLocation() {
+    	return location;
+    }
+    
+    public void setLocation() {
+    	this.location=location;
     }
 }
