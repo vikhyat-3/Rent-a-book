@@ -27,9 +27,17 @@ public class User {
     @Length(min = 2, max = 100)
     private String name;
     
-    @NotBlank(message = "Please enter user name")
-    @NotNull(message = "Please enter user name but null raising")
+    @NotBlank(message = "Please enter location")
+    @NotNull(message = "Please enter location but null raising")
     private String location;
+    
+    @NotBlank(message = "Please enter email")
+    @NotNull(message = "Please enter email but null raising")
+    private String email;
+    
+    @NotBlank(message = "Please enter password")
+    @NotNull(message = "Please enter password but null raising")
+    private String password;
     
     @Override
     public String toString(){
@@ -58,5 +66,21 @@ public class User {
     
     public void setLocation() {
     	this.location=location;
+    }
+    
+    public String getEmail() {
+    	return email;
+    }
+    
+    public void setEmail() {
+    	this.email=email;
+    }
+    
+    public String getPassword() {
+    	return password;
+    }
+    
+    public void setPassword() {
+    	this.password=password;
     }
 }
