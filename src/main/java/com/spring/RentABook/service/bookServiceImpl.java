@@ -1,6 +1,7 @@
 package com.spring.RentABook.service;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -19,5 +20,9 @@ public class bookServiceImpl implements bookService{
 
     public Book createBook(Book newBook){
         return this.bookRepository.insert(newBook);
+    }
+
+    public Optional<Book> getBookByID(String id){
+        return this.bookRepository.findById(id);
     }
 }
