@@ -11,5 +11,6 @@ public enum Genre {
     NON_FICTION,
     BIOGRAPHY,
     AUTO_BIOGRAPHY,
-    ADVENTURE
+    ADVENTURE,
+    DRAMA
 }
