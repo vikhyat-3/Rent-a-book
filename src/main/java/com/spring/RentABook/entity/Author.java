@@ -44,7 +44,7 @@ public class Author {
         this.id = id;
         this.name = name;
         this.gender = gender;
-        if(books==null)
+        if(books==null||(books.size()==1 && books.get(0)==null))
         this.books = new ArrayList<>();
         else this.books=books;
     }

@@ -30,7 +30,6 @@ public class author {
     public ResponseEntity<List<Author>> getAllAuthors(){
         try{
             List<Author> allAuthors=this.authorServiceImpl.getAllAuthors();
-            System.out.println(allAuthors);
             return ResponseEntity.status(HttpStatus.OK).body(allAuthors);
         }
         catch(Exception e){
