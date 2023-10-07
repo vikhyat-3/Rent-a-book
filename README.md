@@ -21,7 +21,7 @@ Books: ID, Name, Author, Published Year, Genre, Description
 
 Author: ID, Name, Gender, Books[]
 
-##API Documentation
+## API Documentation
 
 The API Documentation can be found at the end point: {baseURL}/swagger-ui/index.html
 
