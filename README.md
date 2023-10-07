@@ -21,6 +21,11 @@ Books: ID, Name, Author, Published Year, Genre, Description
 
 Author: ID, Name, Gender, Books[]
 
+##API Documentation
+
+The API Documentation can be found at the end point: {baseURL}/swagger-ui/index.html
+
+The default locally used baseURL is localhost:8080. But you can always change it using the application.properties file
 
 ## License
 
