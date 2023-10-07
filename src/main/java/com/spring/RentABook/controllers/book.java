@@ -25,24 +25,39 @@ public class book {
     @Autowired
     private bookServiceImpl bookService;
 
+    
     @GetMapping("books")
     public ResponseEntity<List<Book>> getAllBooks(){
         try{
             List<Book> listOfBooks=this.bookService.getBooks();
-            return ResponseEntity.status(HttpStatus.CREATED).body(listOfBooks);
+            System.out.println(listOfBooks);
+            return ResponseEntity.status(HttpStatus.OK).body(listOfBooks);
+            
+            // return ResponseEntity.badRequest().build();
+
         }
         catch(Exception e){
+            System.out.println(e);
             return ResponseEntity.badRequest().build();
         }
     }
 
     @PostMapping("/book")
     public ResponseEntity<Book> createNewBook(@jakarta.validation.Valid@RequestBody Book newBook){
-        if(newBook.getId()!=null){
-            Book newBook2= this.bookService.createBook(newBook);
-            return ResponseEntity.status(HttpStatus.CREATED).body(newBook2);
+        System.out.println(newBook+" "+newBook.getId());
+        if(newBook.getId()==null){
+            try{
+
+                Book newBookCreated= this.bookService.createBook(newBook);
+                return ResponseEntity.status(HttpStatus.CREATED).body(newBookCreated);
+            }
+            catch(Exception e){
+                System.out.println("TRYING TO CATCH");
+                return ResponseEntity.badRequest().build();
+            }
         }
         else{
+            System.out.println("BAD REQUEST INCOMING");
             return ResponseEntity.badRequest().build();
         }
     }
@@ -52,7 +67,7 @@ public class book {
         try{
             Optional<Book> fetchedBook=this.bookService.getBookByID(bookID);
             if(fetchedBook.isPresent())
-                return ResponseEntity.status(HttpStatus.NOT_MODIFIED).body(fetchedBook);
+                return ResponseEntity.status(HttpStatus.OK).body(fetchedBook);
             else return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
 
         }
