@@ -7,6 +7,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 
 import org.hibernate.validator.constraints.Length;
+import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.validation.annotation.Validated;
 
@@ -33,6 +34,8 @@ public class Author {
 
     private Gender gender;
 
+    @DBRef
+    @Schema(accessMode = AccessMode.READ_ONLY)
     private ArrayList<Book> books;
 
     public Author(String id,
@@ -41,7 +44,9 @@ public class Author {
         this.id = id;
         this.name = name;
         this.gender = gender;
-        this.books = books;
+        if(books==null)
+        this.books = new ArrayList<>();
+        else this.books=books;
     }
 
     public String getId() {
