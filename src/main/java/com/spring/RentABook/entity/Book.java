@@ -11,6 +11,8 @@ import org.hibernate.validator.constraints.Length;
 import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.validation.annotation.Validated;
 
+import com.spring.RentABook.dto.AuthorDto;
+
 import io.swagger.v3.oas.annotations.media.Schema;
 import io.swagger.v3.oas.annotations.media.Schema.AccessMode;
 import jakarta.validation.constraints.NotBlank;
@@ -23,7 +25,7 @@ import jakarta.validation.constraints.Size;
 public class Book {
     public Book(String id,
             @NotBlank(message = "Please enter book name") @NotNull(message = "Please enter book name") @Size(min = 2, max = 100) @Length(min = 2, max = 100) String name,
-            Author author, Date publishedDate, ArrayList<Genre> genre, String description) {
+             AuthorDto author,Date publishedDate, ArrayList<Genre> genre, String description) {
         this.id = id;
         this.name = name;
         this.author = author;
@@ -31,7 +33,10 @@ public class Book {
         this.genre = genre;
         this.description = description;
     }
-
+    // @Override
+    // public String toString(){
+    //     return "ID:"+this.id+"Name: "+this.name+"AUthor"+this.author.getName();
+    // }
     @Id
     @GeneratedValue
     @Schema(accessMode = AccessMode.READ_ONLY)
@@ -43,17 +48,25 @@ public class Book {
     @Length(min = 2, max = 100)
     private String name;
 
-    private Author author;
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    private AuthorDto author;
     private Date publishedDate;
     private ArrayList<Genre> genre;
     private String description;
 
 
-    public Author getAuthor() {
+    public AuthorDto getAuthor() {
         return author;
     }
 
-    public void setAuthor(Author author) {
+    public void setAuthor(AuthorDto author) {
         this.author = author;
     }
 
